@@ -1,8 +1,38 @@
 import React from 'react'
 import { useTable } from 'react-table'
+import styled from 'styled-components'
 import useSWR from 'swr'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
+
+const Styles = styled.div`
+  padding: 1rem;
+
+  table {
+    border-spacing: 0;
+    border: 1px solid black;
+
+    tr {
+      :last-child {
+        td {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    th,
+    td {
+      margin: 0;
+      padding: 0.5rem;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+
+      :last-child {
+        border-right: 0;
+      }
+    }
+  }
+`
 
 export default function LogTable(props) {
   const columns = React.useMemo(
@@ -50,7 +80,9 @@ export default function LogTable(props) {
   if (!data) return <div>loading...</div>
 
   return (
-    <Table columns={columns} data={data} />
+    <Styles>
+      <Table columns={columns} data={data} />
+    </Styles>
   )
 }
 
