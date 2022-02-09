@@ -12,7 +12,7 @@ export default function Home() {
       <main>
         <h1>Welcome to Sherlock</h1>
         <div>
-          <Environment name="minikube" url="https://minikube.lsst.codes/sherlock/status" />
+          <Environment name="minikube" url="https://minikube.lsst.codes/sherlock/" />
         </div>
       </main>
     </div>
