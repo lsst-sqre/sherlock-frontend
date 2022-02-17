@@ -1,4 +1,5 @@
 import useSWR from 'swr'
+import Link from 'next/link'
 
 import Service from '../components/service'
 
@@ -6,6 +7,7 @@ const fetcher = (...args) => fetch(...args).then(res => res.json())
 const path = require('path');
 
 export default function Environment(props) {
+  const detailsUrl = path.join('/', props.name)
   const statusUrl = path.join(props.url, 'status')
   const { data, error } = useSWR(statusUrl, fetcher)
 
@@ -18,10 +20,13 @@ export default function Environment(props) {
 
   return (
     <div>
-    <h3>{status} {props.name} {props.url}</h3>
+      <Link href={detailsUrl}>
+        <h1>{status} <a>{props.name}</a> {props.url}</h1>
+      </Link>
+
     {services.map(item =>
       <div key={item.name}>
-        <Service name={item.name} status={item.status} />
+        <Service name={item.name} status={item.status} url={props.url} />
       </div>
     )}
     </div>
