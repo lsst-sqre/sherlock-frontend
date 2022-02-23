@@ -1,15 +1,17 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 export default function LogLink(props) {
   const data = {
-    pathname: '/logs',
+    pathname: "/logs",
     query: {
       title: props.title,
-      url: props.url
-    }
-  }
+      url: props.url,
+    },
+  };
 
   return (
-    <Link href={data}><a>{props.label}</a></Link>
+    <Link href={data}>
+      <a>{props.label}</a>
+    </Link>
   );
 }
