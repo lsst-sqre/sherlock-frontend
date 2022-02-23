@@ -295,23 +295,29 @@ function Table({ columns, data }) {
   return (
     <table {...getTableProps()}>
       <thead>
-        {headerGroups.map(headerGroup => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                {column.render('Header')}
-                  <span>
-                    {column.isSorted
-                      ? column.isSortedDesc
-                        ? ' 🔽'
-                        : ' 🔼'
-                      : ''}
-                  </span>
-                <div>{column.canFilter ? column.render('Filter') : null}</div>
-              </th>
-            ))}
-          </tr>
-        ))}
+        {headerGroups.map(headerGroup => {
+          const { key, ...restHeaderGroupProps } = headerGroup.getHeaderGroupProps()
+          return (
+            <tr key={key} {...restHeaderGroupProps}>
+              {headerGroup.headers.map(column => {
+                const { key, ...restColumn } = column.getHeaderProps(column.getSortByToggleProps())
+                return (
+                  <th key={key} {...restColumn}>
+                    {column.render('Header')}
+                      <span>
+                        {column.isSorted
+                          ? column.isSortedDesc
+                            ? ' 🔽'
+                            : ' 🔼'
+                          : ''}
+                      </span>
+                    <div>{column.canFilter ? column.render('Filter') : null}</div>
+                  </th>
+                )
+              })}
+            </tr>
+          )
+        })}
           <tr>
             <th
               colSpan={visibleColumns.length}
@@ -330,10 +336,12 @@ function Table({ columns, data }) {
       <tbody {...getTableBodyProps()}>
         {rows.map((row, i) => {
           prepareRow(row)
+          const {key, ...rowProps} = row.getRowProps()
           return (
-            <tr {...row.getRowProps()}>
+            <tr key={key} {...rowProps}>
               {row.cells.map(cell => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                const {key, ...cellProps} = cell.getCellProps()
+                return <td key={key} {...cellProps}>{cell.render('Cell')}</td>
               })}
             </tr>
           )

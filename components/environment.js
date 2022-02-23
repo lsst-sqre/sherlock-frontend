@@ -20,7 +20,7 @@ export default function Environment(props) {
 
   return (
     <div>
-      <Link href={detailsUrl}>
+      <Link href={detailsUrl} passHref>
         <h1>{status} <a>{props.name}</a> {props.url}</h1>
       </Link>
 
