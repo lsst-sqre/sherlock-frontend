@@ -7,16 +7,16 @@ export default function Service(props) {
   const errorsUrl = path.join(logsUrl, 'errors')
 
   var status = '✅'
-  var links = <LogLink url={logsUrl} label='Logs' title={`Logs for ${props.name}`} />
+  const logs = <LogLink url={logsUrl} label='Logs' title={`Logs for ${props.name}`} />
 
   if (props.status != 'normal') {
     status = '❌'
-    links += <LogLink url={errorsUrl} label='Errors' title={`Errors for ${props.name}`} />
+    const errors = <LogLink url={errorsUrl} label='Errors' title={`Errors for ${props.name}`} />
   }
 
   return (
     <div>
-      {status} {props.name} {links}
+      {status} {props.name} {logs} {errors}
     </div>
   );
 }
