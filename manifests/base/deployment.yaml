@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sherlock
+  labels:
+    app: sherlock
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: sherlock
+  template:
+    metadata:
+      labels:
+        name: sherlock
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: sherlock
+          imagePullPolicy: "Always"
+          # Use images field in a Kustomization to regularly set/update image tag
+          image: "lsstsqre/sherlock-frontend"
+          ports:
+            - containerPort: 3000
+              name: app
+          envFrom:
+            - configMapRef:
+                name: sherlock
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - all
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - name: creds
+              mountPath: "/etc/sherlock/creds"
+              readOnly: true
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+      volumes:
+        - name: creds
+          secret:
+            secretName: sherlock-vaultsecret
