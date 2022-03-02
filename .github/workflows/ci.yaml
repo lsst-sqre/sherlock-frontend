@@ -92,7 +92,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: lsstsqre/times-square-ui:${{ steps.vars.outputs.tag }}
+          tags: lsstsqre/sherlock-frontend:${{ steps.vars.outputs.tag }}
           target: production
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
