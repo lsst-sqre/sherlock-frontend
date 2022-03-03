@@ -30,4 +30,4 @@ USER nextjs
 
 EXPOSE 3000
 
-CMD ["npm", "run start"]
+CMD ["node_modules/.bin/next", "start"]
