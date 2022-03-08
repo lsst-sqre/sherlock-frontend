@@ -11,7 +11,12 @@ export default function Environment(props) {
   const statusUrl = path.join(props.url, "status");
   const { data, error } = useSWR(statusUrl, fetcher);
 
-  if (error) return <div>{props.name} failed to contact</div>;
+  if (error)
+    return (
+      <div>
+        {props.name} failed to contact at {statusUrl}
+      </div>
+    );
   if (!data) return <div>{props.name} loading...</div>;
 
   const errored = data.filter((s) => s.status != "normal");
