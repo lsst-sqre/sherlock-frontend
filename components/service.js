@@ -3,8 +3,8 @@ import LogLink from "../components/loglink";
 const path = require("path");
 
 export default function Service(props) {
-  const logsUrl = path.join(props.url, "service", props.name, "/");
-  const errorsUrl = path.join(logsUrl, "errors");
+  const logsUrl = props.url + "service/" + props.name + "/";
+  const errorsUrl = logsUrl + "errors";
 
   var status = "✅";
   const logs = (
