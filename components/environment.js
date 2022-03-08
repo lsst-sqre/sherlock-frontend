@@ -8,7 +8,7 @@ const path = require("path");
 
 export default function Environment(props) {
   const detailsUrl = path.join("/", props.name);
-  const statusUrl = path.join(props.url, "status");
+  const statusUrl = props.url + "status";
   const { data, error } = useSWR(statusUrl, fetcher);
 
   if (error)
