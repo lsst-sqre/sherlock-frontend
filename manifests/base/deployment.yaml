@@ -36,6 +36,8 @@ spec:
             - name: creds
               mountPath: "/etc/sherlock/creds"
               readOnly: true
+            - name: tmp
+              mountPath: "/tmp"
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
@@ -44,3 +46,5 @@ spec:
         - name: creds
           secret:
             secretName: sherlock-vaultsecret
+        - name: tmp
+          emptyDir: {}
