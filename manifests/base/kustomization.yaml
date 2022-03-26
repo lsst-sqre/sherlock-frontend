@@ -3,7 +3,7 @@ kind: Kustomization
 
 images:
   - name: lsstsqre/sherlock-frontend
-    newTag: 0.0.10
+    newTag: 0.0.12
 
 resources:
   - configmap.yaml
