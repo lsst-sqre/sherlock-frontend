@@ -10,7 +10,7 @@ export default function EnvironmentStatusPush(req, res) {
         console.error(error);
         res.status(500).json({ error: error });
       } else {
-        res.status(200).json(data);
+        res.status(200);
       }
     });
     res.status(200).json({ status: "ok" });
