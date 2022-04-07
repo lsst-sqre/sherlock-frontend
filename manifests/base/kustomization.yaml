@@ -6,7 +6,6 @@ images:
     newTag: 0.0.15
 
 resources:
-  - configmap.yaml
   - deployment.yaml
   - service.yaml
   - secret.yaml
