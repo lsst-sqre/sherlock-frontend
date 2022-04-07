@@ -31,8 +31,8 @@ spec:
             readOnlyRootFilesystem: true
           volumeMounts:
             - name: environments
-              mountPath: "/app/environment.json"
-              subPath: "environment.json"
+              mountPath: "/app/environments.json"
+              subPath: "environments.json"
             - name: tmp
               mountPath: "/tmp"
       securityContext:
@@ -43,5 +43,8 @@ spec:
         - name: environments
           secret:
             secretName: sherlock-vaultsecret
+            items:
+              - key: environments.json
+                path: environments.json
         - name: tmp
           emptyDir: {}
