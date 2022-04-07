@@ -1,0 +1,23 @@
+[
+  {
+    "params": {
+      "environment": "data",
+      "key": "DEADKEY1",
+      "url": "https://data.lsst.cloud/sherlock/"
+    }
+  },
+  {
+    "params": {
+      "environment": "data-int",
+      "key": "DEADKEY2",
+      "url": "https://data-int.lsst.cloud/sherlock/"
+    }
+  },
+  {
+    "params": {
+      "environment": "data-dev",
+      "key": "DEADKEY3",
+      "url": "https://data-dev.lsst.cloud/sherlock/"
+    }
+  }
+]

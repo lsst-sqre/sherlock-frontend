@@ -1,0 +1,22 @@
+[
+  {
+    "errors": [],
+    "name": "gafaelfawr-gafaelfawr-8080",
+    "status": "normal"
+  },
+  {
+    "errors": [],
+    "name": "nublado2-proxy-public-http",
+    "status": "normal"
+  },
+  {
+    "errors": [],
+    "name": "cachemachine-cachemachine-80",
+    "status": "normal"
+  },
+  {
+    "errors": [],
+    "name": "moneypenny-moneypenny-8080",
+    "status": "normal"
+  }
+]
