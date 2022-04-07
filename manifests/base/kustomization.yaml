@@ -3,7 +3,7 @@ kind: Kustomization
 
 images:
   - name: lsstsqre/sherlock-frontend
-    newTag: 0.0.16
+    newTag: 0.0.17
 
 resources:
   - deployment.yaml
