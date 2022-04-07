@@ -23,9 +23,6 @@ spec:
           ports:
             - containerPort: 3000
               name: app
-          envFrom:
-            - configMapRef:
-                name: sherlock
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -33,9 +30,9 @@ spec:
                 - all
             readOnlyRootFilesystem: true
           volumeMounts:
-            - name: creds
-              mountPath: "/etc/sherlock/creds"
-              readOnly: true
+            - name: environments
+              mountPath: "/app/environment.json"
+              subPath: "environment.json"
             - name: tmp
               mountPath: "/tmp"
       securityContext:
@@ -43,7 +40,7 @@ spec:
         runAsUser: 1000
         runAsGroup: 1000
       volumes:
-        - name: creds
+        - name: environments
           secret:
             secretName: sherlock-vaultsecret
         - name: tmp
