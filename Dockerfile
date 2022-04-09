@@ -3,6 +3,8 @@ FROM node:16-alpine AS builder
 WORKDIR /app
 
 COPY package.json package-lock.json ./
+COPY environments.json /etc/sherlock/environments.json
+
 RUN npm install
 
 COPY . .
