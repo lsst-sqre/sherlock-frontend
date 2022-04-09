@@ -22,6 +22,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Place environments.json
+        run: |
+          sudo mkdir /etc/sherlock
+          sudo cp environments.json /etc/sherlock/
+
       - name: Read .nvmrc
         id: node_version
         run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
