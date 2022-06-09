@@ -4,7 +4,8 @@ import Link from "next/link";
 import Service from "../components/service";
 
 const fetcher = async (url) => {
-  const res = await fetch(url);
+  const options = { credentials: "include" };
+  const res = await fetch(url, options);
 
   // If the status code is not in the range 200-299,
   // we still try to parse and throw it.
