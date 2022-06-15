@@ -60,7 +60,7 @@ jobs:
     needs: [test]
 
     # Only do Docker builds for pushes to ticket branches and tagged releases.
-    if: startsWith(github.ref, 'refs/tags/') || startsWith(github.ref, 'refs/heads/tickets/')
+    if: startsWith(github.ref, 'refs/tags/') || startsWith(github.ref, 'tickets/')
 
     runs-on: ubuntu-latest
 
