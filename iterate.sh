@@ -1,2 +1,2 @@
 #!/bin/bash -ex
-docker build . -t lsst-sqre/sherlock-frontend:dev
+docker build . -t lsstsqre/sherlock-frontend:dev
